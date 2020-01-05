@@ -1,6 +1,5 @@
 # AdvancedPageControl
 
-[![CI Status](https://img.shields.io/travis/Mohanned Binmiskeen/AdvancedPageControl.svg?style=flat)](https://travis-ci.org/Mohanned Binmiskeen/AdvancedPageControl)
 [![Version](https://img.shields.io/cocoapods/v/AdvancedPageControl.svg?style=flat)](https://cocoapods.org/pods/AdvancedPageControl)
 [![License](https://img.shields.io/cocoapods/l/AdvancedPageControl.svg?style=flat)](https://cocoapods.org/pods/AdvancedPageControl)
 [![Platform](https://img.shields.io/cocoapods/p/AdvancedPageControl.svg?style=flat)](https://cocoapods.org/pods/AdvancedPageControl)
@@ -98,6 +97,8 @@ ThinWormDrawer()
 ThinWormHeadsDrawer()
 WormDrawer()
 ```
+
+![Alt Text](https://github.com/mohn93/AdvancedPageControl/blob/master/Example/advanced-page-control-demo.gif)
 
 ## Customization
 ```swift
