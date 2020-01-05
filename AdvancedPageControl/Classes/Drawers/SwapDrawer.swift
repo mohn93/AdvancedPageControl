@@ -1,0 +1,44 @@
+//
+//  SwapDrawer.swift
+//  Maps
+//
+//  Created by Mohaned Benmesken on 12/31/19.
+//  Copyright © 2019 Mohaned Benmesken. All rights reserved.
+//
+
+import Foundation
+import UIKit
+public class SwapDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDraw {
+    
+    public func draw(_ rect: CGRect) {
+        drawIndicators(rect)
+        drawCurrentItem(rect)
+    }
+    
+    func drawIndicators(_ rect: CGRect) {
+        for i in 0..<numberOfPages{
+            if Int(floor(currentItem)) != i{
+                let translate = (width + space) * (currentItem - (floor(currentItem)))
+                let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+                let y =  rect.origin.y + centeredYPosition
+                if i ==  Int(floor(currentItem) + 1 ) && i > 0 {
+                    let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width, space: space, numberOfPages: numberOfPages) - translate
+                    drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
+                        , raduis:raduis,color: dotsColor)
+                }else{
+                    let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space, numberOfPages: numberOfPages)
+                    drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
+                        , raduis:raduis,color: dotsColor)
+                }
+            }
+        }
+    }
+    
+    fileprivate func drawCurrentItem(_ rect: CGRect) {
+        let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+        let y = rect.origin.y + centeredYPosition
+        let x = getCenteredXPosition(rect, itemPos: currentItem, dotSize: width,space: space, numberOfPages: numberOfPages)
+        drawItem(CGRect(x: x, y:  y , width: width , height: height )
+            , raduis:raduis,color: indicatorColor)
+    }
+}

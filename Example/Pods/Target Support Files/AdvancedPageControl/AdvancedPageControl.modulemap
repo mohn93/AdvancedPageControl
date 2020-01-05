@@ -1,0 +1,6 @@
+framework module AdvancedPageControl {
+  umbrella header "AdvancedPageControl-umbrella.h"
+
+  export *
+  module * { export * }
+}
