@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/cocoapods/l/AdvancedPageControl.svg?style=flat)](https://cocoapods.org/pods/AdvancedPageControl)
 [![Platform](https://img.shields.io/cocoapods/p/AdvancedPageControl.svg?style=flat)](https://cocoapods.org/pods/AdvancedPageControl)
 
+A simple yet powerful page control indicator animations library for IOS, Written in Swift.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
