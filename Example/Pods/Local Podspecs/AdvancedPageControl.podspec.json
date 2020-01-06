@@ -1,9 +1,9 @@
 {
   "name": "AdvancedPageControl",
-  "version": "0.1.0",
-  "summary": "A short description of AdvancedPageControl.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Mohanned Binmiskeen/AdvancedPageControl",
+  "version": "0.1.1",
+  "summary": "A simple yet powerful page control indicator animations library.",
+  "description": "TA simple yet powerful page control indicator animations library.",
+  "homepage": "https://github.com/mohn93/AdvancedPageControl.git",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "Mohanned Binmiskeen": "mohn93@gmail.com"
   },
   "source": {
-    "git": "https://github.com/Mohanned Binmiskeen/AdvancedPageControl.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/mohn93/AdvancedPageControl.git",
+    "tag": "0.1.1"
   },
   "platforms": {
     "ios": "8.0"

@@ -1,5 +1,5 @@
 PODS:
-  - AdvancedPageControl (0.1.0)
+  - AdvancedPageControl (0.1.1)
   - Nimble (7.3.4)
   - Quick (1.2.0)
 
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AdvancedPageControl: 3be31a2ad8f66627587464d1d24255241fa93641
+  AdvancedPageControl: e65c54699abb3f49d2270486812735429d0b3875
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
