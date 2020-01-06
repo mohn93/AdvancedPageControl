@@ -27,16 +27,16 @@ public class ColorBlendDrawer:AdvancedPageControlDrawerParent, AdvancedPageContr
                 if i ==  Int(floor(currentItem) + 1 ) {
                     
                     drawItem(CGRect(x: x, y:  y, width: CGFloat(width ) , height: CGFloat(height) )
-                        , raduis:raduis,color: (indicatorColor * Double(progress) ) + (dotsColor * Double(1 - progress) ))
+                        , raduis:radius,color: (indicatorColor * Double(progress) ) + (dotsColor * Double(1 - progress) ))
                 }else{
                     
                     drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
-                        , raduis:raduis,color: dotsColor)
+                        , raduis:radius,color: dotsColor)
                 }
             }else{
                 
                 drawItem(CGRect(x: x, y:  y, width: CGFloat(width ) , height: CGFloat(height) )
-                    , raduis:raduis,color: (dotsColor * Double(progress) ) + (indicatorColor * Double(1 - progress) ))
+                    , raduis:radius,color: (dotsColor * Double(progress) ) + (indicatorColor * Double(1 - progress) ))
             }
         }
     }

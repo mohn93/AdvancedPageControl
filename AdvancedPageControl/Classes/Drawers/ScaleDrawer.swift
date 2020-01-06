@@ -29,13 +29,13 @@ public class ScaleDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDra
                     let y =  rect.origin.y + centeredYPosition - (translate * heightRatio) / 2
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width , space: space, numberOfPages: numberOfPages) - (translate * widthRatio) / 2
                     drawItem(CGRect(x: x, y:  y, width: width  + (translate * widthRatio), height: height + (translate * heightRatio))
-                        , raduis:raduis,color: (indicatorColor * Double(progress)) + (dotsColor * Double(1 - progress) ))
+                        , raduis:radius,color: (indicatorColor * Double(progress)) + (dotsColor * Double(1 - progress) ))
                 }else{
                     let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
                     let y =  rect.origin.y + centeredYPosition
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space , numberOfPages: numberOfPages)
                     drawItem(CGRect(x: x, y:  y, width: width , height: height)
-                        , raduis:raduis,color: dotsColor)
+                        , raduis:radius,color: dotsColor)
                 }
             }else{
                 let opisiteTranslate = (topTranslate - translate)
@@ -43,7 +43,7 @@ public class ScaleDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDra
                 let y =  rect.origin.y + centeredYPosition - (opisiteTranslate * heightRatio) / 2
                 let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width, space: space , numberOfPages: numberOfPages) - (opisiteTranslate * widthRatio) / 2
                 drawItem(CGRect(x: x, y:  y, width: width + (opisiteTranslate * widthRatio), height: height + (opisiteTranslate * heightRatio))
-                    , raduis:raduis, color: (dotsColor * Double(progress) ) + (indicatorColor * Double(1 - progress) ))
+                    , raduis:radius, color: (dotsColor * Double(progress) ) + (indicatorColor * Double(1 - progress) ))
             }
         }
     }

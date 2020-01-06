@@ -19,7 +19,7 @@ public class AdvancedPageControlDrawerParent {
     var height: CGFloat
     var width: CGFloat
     var space: CGFloat
-    var raduis: CGFloat
+    var radius: CGFloat
    public var currentItem:CGFloat
     var indicatorColor:UIColor
     var dotsColor:UIColor
@@ -34,7 +34,7 @@ public class AdvancedPageControlDrawerParent {
          dotsColor: UIColor? = .lightGray) {
         self.numberOfPages = numberOfPages!
         self.space = space!
-        self.raduis = raduis!
+        self.radius = raduis!
         self.currentItem = currentItem!
         self.indicatorColor = indicatorColor!
         self.dotsColor = dotsColor!

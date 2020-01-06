@@ -50,13 +50,13 @@ public class ExtendedDotDrawer:AdvancedPageControlDrawerParent, AdvancedPageCont
                     // reverse the scale value
                     let scale = step - ( halfMovementRatio  * step )
                     drawItem(CGRect(x: rect.origin.x  + x, y:  y , width:  width  + scale, height: height )
-                        , raduis:raduis,color: dotsColor)
+                        , raduis:radius,color: dotsColor)
                 }else{
                     let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
                     let y =  rect.origin.y + centeredYPosition
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space, numberOfPages: numberOfPages+1)
                     drawItem(CGRect(x: rect.origin.x + x, y:  y, width: width, height: height)
-                        , raduis:raduis,color: dotsColor)
+                        , raduis:radius,color: dotsColor)
                     
                 }
             }
@@ -74,7 +74,7 @@ public class ExtendedDotDrawer:AdvancedPageControlDrawerParent, AdvancedPageCont
             let x = getCenteredXPosition(rect, itemPos: steadyPosition, dotSize: width,space: space, numberOfPages: (numberOfPages)+1)
         let halfMovementRatio =  1 - currPosProgress
         drawItem(CGRect(x: rect.origin.x  + x, y:  y , width:  width  + ( halfMovementRatio  * step ), height: height )
-            , raduis:raduis,color: dotsColor)
+            , raduis:radius,color: dotsColor)
         }
 
     }

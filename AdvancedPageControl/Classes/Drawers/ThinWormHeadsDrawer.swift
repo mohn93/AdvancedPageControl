@@ -21,7 +21,7 @@ public class ThinWormHeadsDrawer:AdvancedPageControlDrawerParent, AdvancedPageCo
             let y =  rect.origin.y + centeredYPosition
             let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space, numberOfPages: numberOfPages)
             drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
-                , raduis:raduis,color: dotsColor)
+                , raduis:radius,color: dotsColor)
         }
     }
     
@@ -35,18 +35,18 @@ public class ThinWormHeadsDrawer:AdvancedPageControlDrawerParent, AdvancedPageCo
         let thinOffset = (halfMovementRatio * 16)
         let y = rect.origin.y + centeredYPosition + thinOffset / 2
         drawItem(CGRect(x: x, y:  y , width:  width  + ( halfMovementRatio * 2 * (space + width) ), height: height - thinOffset )
-            , raduis:raduis,color: indicatorColor)
+            , raduis:radius,color: indicatorColor)
         if halfMovementRatio != 0{
             let y = rect.origin.y + centeredYPosition
             drawItem(CGRect(x: x, y:  y , width:  width  , height: height  )
-                , raduis:raduis,color: indicatorColor)
+                , raduis:radius,color: indicatorColor)
             
             let curPos = !isPassedHalf ? ((currPosTranslate) * 2) + (floor(currentItem)) : ceil(currentItem)
            
             let x = getCenteredXPosition(rect, itemPos: curPos, dotSize: width,space: space, numberOfPages: numberOfPages)
             
             drawItem(CGRect(x: x, y:  y, width:  width  , height: height  )
-                , raduis:raduis,color: indicatorColor)
+                , raduis:radius,color: indicatorColor)
         }
     }
 }
