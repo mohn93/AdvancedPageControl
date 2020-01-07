@@ -30,8 +30,8 @@ public class AdvancedPageControlDrawerParent {
          space: CGFloat? = 16,
          raduis: CGFloat? = 16,
          currentItem: CGFloat? = 0,
-         indicatorColor: UIColor? = .red,
-         dotsColor: UIColor? = .lightGray) {
+         indicatorColor: UIColor? = .white,
+         dotsColor: UIColor? = UIColor.lightGray ) {
         self.numberOfPages = numberOfPages!
         self.space = space!
         self.radius = raduis!
@@ -65,6 +65,6 @@ public class AdvancedPageControlDrawerParent {
     func drawItem(_ rect: CGRect, raduis:CGFloat, color:UIColor){
         let path = UIBezierPath(roundedRect:rect, cornerRadius: raduis)
         color.setFill()
-        path.fill()        
+        path.fill()
     }
 }

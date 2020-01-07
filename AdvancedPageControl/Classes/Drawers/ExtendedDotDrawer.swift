@@ -16,8 +16,7 @@ public class ExtendedDotDrawer:AdvancedPageControlDrawerParent, AdvancedPageCont
                   height:CGFloat? = 16,
                   width:CGFloat? = 16,
                   currentItem: CGFloat? = 0,
-                  
-                  dotsColor: UIColor? = .red) {
+                  dotsColor: UIColor? = .white) {
         
         super.init(numberOfPages: numberOfPages!,
                    height: height!,
@@ -25,8 +24,8 @@ public class ExtendedDotDrawer:AdvancedPageControlDrawerParent, AdvancedPageCont
                    space: space!,
                    raduis: raduis!,
                    currentItem: currentItem!,
-                   indicatorColor: dotsColor!,
-                   dotsColor: dotsColor!)
+                   indicatorColor: dotsColor,
+                   dotsColor: dotsColor)
     }
     
     public func draw(_ rect: CGRect) {

@@ -21,7 +21,7 @@ public class SwapDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDraw
                 let translate = (width + space) * (currentItem - (floor(currentItem)))
                 let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
                 let y =  rect.origin.y + centeredYPosition
-                if i ==  Int(floor(currentItem) + 1 ) && i > 0 {
+                if i ==  Int(floor(currentItem) + 1 ) {
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width, space: space, numberOfPages: numberOfPages) - translate
                     drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
                         , raduis:radius,color: dotsColor)
