@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/AdvancedPageControl.svg?style=flat)](https://cocoapods.org/pods/AdvancedPageControl)
 [![Platform](https://img.shields.io/cocoapods/p/AdvancedPageControl.svg?style=flat)](https://cocoapods.org/pods/AdvancedPageControl)
 
-A simple yet powerful page control indicator animations library for IOS, Written in Swift.
+A simple yet powerful page control indicator animations library for iOS, Written in Swift.
 
 ## Example
 
@@ -33,7 +33,7 @@ pod 'AdvancedPageControl'
 
 
 ## Usage
-I'm using it with expanded UICollectionView, create a collection view and link the DataSource and Delegate for it to your ViewController, and add UICollectionViewDeleageFlowLayout
+I'm using it with expanded UICollectionView, create a collection view and link the DataSource and Delegate to your ViewController, and add UICollectionViewDeleageFlowLayout
 
 ```swift
 class ViewController: UIViewController,
@@ -42,7 +42,7 @@ class ViewController: UIViewController,
     UICollectionViewDelegateFlowLayout { ....
 ```
 
-Then add this methods:
+Then add these methods:
 
 ```swift
    func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -65,7 +65,7 @@ Then add this methods:
    }
 ```
 
-Tick 'Scrolling enabled' and 'Paging enabled' Checkboxes  in storyboard
+Tick 'Scrolling enabled' and 'Paging enabled' Checkboxes in storyboard UICollectionView properties
 
 Then add this method and pass the offset of the scrolling for UICollectionView, and width of the UICollectionView, to the pageControl , setCurrentItem, Method
 
