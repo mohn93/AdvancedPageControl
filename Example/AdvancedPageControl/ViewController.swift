@@ -69,7 +69,7 @@ class ViewController: UIViewController,
         
         pageControl1.drawer = ColorBlendDrawer()
         pageControl2.drawer = DropDrawer()
-        pageControl3.drawer = ExtendedDotDrawer()
+        pageControl3.drawer = ExtendedDotDrawer( dotsColor: .clear, isBordered:true,borderColor: .white)
         pageControl4.drawer = JumpDrawer()
         pageControl5.drawer = ScaleDrawer()
         pageControl6.drawer = SlideDrawer()
