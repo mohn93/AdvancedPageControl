@@ -73,7 +73,7 @@ class ViewController: UIViewController,
         pageControl4.drawer = JumpDrawer()
         pageControl5.drawer = ScaleDrawer()
         pageControl6.drawer = SlideDrawer()
-        pageControl7.drawer = SwapDrawer()
+        pageControl7.drawer = SwapDrawer( dotsColor: .clear, isBordered:true,borderColor: .white)
         pageControl8.drawer = ThinWormDrawer()
         pageControl9.drawer = ThinWormHeadsDrawer()
         pageControl10.drawer = WormDrawer()

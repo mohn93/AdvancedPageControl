@@ -25,6 +25,8 @@ public class AdvancedPageControlDrawerParent {
     var dotsColor:UIColor
     var isBordered:Bool
     var borderColor:UIColor
+    var borderWidth :CGFloat
+    
     
    public init(numberOfPages:Int? = 5,
          height: CGFloat? = 16,
@@ -35,7 +37,8 @@ public class AdvancedPageControlDrawerParent {
          indicatorColor: UIColor? = .white,
          dotsColor: UIColor? = UIColor.lightGray,
          isBordered:Bool = false,
-         borderColor:UIColor = .white) {
+         borderColor:UIColor = .white,
+         borderWidth:CGFloat = 1) {
         self.numberOfPages = numberOfPages!
         self.space = space!
         self.radius = raduis!
@@ -44,8 +47,9 @@ public class AdvancedPageControlDrawerParent {
         self.dotsColor = dotsColor!
         self.width = width!
         self.height = height!
-    self.isBordered = isBordered
-    self.borderColor = borderColor
+        self.isBordered = isBordered
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
     }
     
     func getScaleFactor(currentItem: CGFloat,ratio:CGFloat) -> CGFloat{
@@ -72,6 +76,7 @@ public class AdvancedPageControlDrawerParent {
         let path = UIBezierPath(roundedRect:rect, cornerRadius: raduis)
         
         if isBordered {
+            path.lineWidth = borderWidth
             borderColor.setStroke()
             path.stroke()
         }

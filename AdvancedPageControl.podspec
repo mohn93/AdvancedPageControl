@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AdvancedPageControl'
-  s.version          = '0.1.2'
+  s.version          = '0.1.4'
   s.summary          = 'A simple yet powerful page control indicator animations library.'
 
 # This description is used to generate tags and improve search results.
@@ -31,7 +31,7 @@ TA simple yet powerful page control indicator animations library.
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'AdvancedPageControl/Classes/**/*'
-  
+  s.swift_versions = '4.0', '5.0'
   # s.resource_bundles = {
   #   'AdvancedPageControl' => ['AdvancedPageControl/Assets/*.png']
   # }
