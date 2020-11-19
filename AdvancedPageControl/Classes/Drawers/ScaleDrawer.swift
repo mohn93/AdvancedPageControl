@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-public class ScaleDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDraw {
+public class ScaleDrawer:AdvancedPageControlDrawerParentWithIndicator, AdvancedPageControlDraw {
     
     var scaleFactor:CGFloat = 8
     
@@ -29,13 +29,13 @@ public class ScaleDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDra
                     let y =  rect.origin.y + centeredYPosition - (translate * heightRatio) / 2
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width , space: space, numberOfPages: numberOfPages) - (translate * widthRatio) / 2
                     drawItem(CGRect(x: x, y:  y, width: width  + (translate * widthRatio), height: height + (translate * heightRatio))
-                        , raduis:radius,color: (indicatorColor * Double(progress)) + (dotsColor * Double(1 - progress) ))
+                        , raduis:radius + (translate / 2),color: (indicatorColor * Double(progress)) + (dotsColor * Double(1 - progress) ),borderWidth: borderWidth,borderColor: borderColor,index: i)
                 }else{
                     let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
                     let y =  rect.origin.y + centeredYPosition
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space , numberOfPages: numberOfPages)
                     drawItem(CGRect(x: x, y:  y, width: width , height: height)
-                        , raduis:radius,color: dotsColor)
+                        , raduis:radius,color: dotsColor,borderWidth: borderWidth,borderColor: borderColor,index: i)
                 }
             }else{
                 let opisiteTranslate = (topTranslate - translate)
@@ -43,7 +43,7 @@ public class ScaleDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDra
                 let y =  rect.origin.y + centeredYPosition - (opisiteTranslate * heightRatio) / 2
                 let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width, space: space , numberOfPages: numberOfPages) - (opisiteTranslate * widthRatio) / 2
                 drawItem(CGRect(x: x, y:  y, width: width + (opisiteTranslate * widthRatio), height: height + (opisiteTranslate * heightRatio))
-                    , raduis:radius, color: (dotsColor * Double(progress) ) + (indicatorColor * Double(1 - progress) ))
+                    , raduis:radius + (opisiteTranslate / 2), color: (dotsColor * Double(progress) ) + (indicatorColor * Double(1 - progress) ),borderWidth: borderWidth,borderColor: borderColor,index: i)
             }
         }
     }

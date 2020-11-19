@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-public class SwapDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDraw {
+public class SwapDrawer:AdvancedPageControlDrawerParentWithIndicator, AdvancedPageControlDraw {
     
     public func draw(_ rect: CGRect) {
         drawIndicators(rect)
@@ -21,14 +21,18 @@ public class SwapDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDraw
                 let translate = (width + space) * (currentItem - (floor(currentItem)))
                 let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
                 let y =  rect.origin.y + centeredYPosition
-                if i ==  Int(floor(currentItem) + 1 ) {
+                if i ==  Int(floor(currentItem) + 1 ) && currentItem >= 0.0 {
+                    
+                    
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width, space: space, numberOfPages: numberOfPages) - translate
                     drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
-                        , raduis:radius,color: dotsColor)
-                }else{
+                        , raduis:radius,color: dotsColor,borderWidth: borderWidth,borderColor: borderColor)
+                } else if  ceil(currentItem) != CGFloat(i) {
+                    
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space, numberOfPages: numberOfPages)
                     drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
-                        , raduis:radius,color: dotsColor)
+                        , raduis:radius,color: dotsColor,borderWidth: borderWidth,borderColor: borderColor)
+                    
                 }
             }
         }
@@ -39,6 +43,6 @@ public class SwapDrawer:AdvancedPageControlDrawerParent, AdvancedPageControlDraw
         let y = rect.origin.y + centeredYPosition
         let x = getCenteredXPosition(rect, itemPos: currentItem, dotSize: width,space: space, numberOfPages: numberOfPages)
         drawItem(CGRect(x: x, y:  y , width: width , height: height )
-            , raduis:radius,color: indicatorColor)
+            , raduis:radius,color: indicatorColor,borderWidth: indicatorBorderWidth,borderColor: indicatorBorderColor)
     }
 }

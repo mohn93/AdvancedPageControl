@@ -10,10 +10,10 @@ import UIKit
 import AdvancedPageControl
 
 class ViewController: UIViewController,
-                    UICollectionViewDataSource,
-                    UICollectionViewDelegate,
-                    UICollectionViewDelegateFlowLayout {
-
+                      UICollectionViewDataSource,
+                      UICollectionViewDelegate,
+                      UICollectionViewDelegateFlowLayout {
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl1: AdvancedPageControlView!
     @IBOutlet weak var pageControl2: AdvancedPageControlView!
@@ -25,6 +25,8 @@ class ViewController: UIViewController,
     @IBOutlet weak var pageControl8: AdvancedPageControlView!
     @IBOutlet weak var pageControl9: AdvancedPageControlView!
     @IBOutlet weak var pageControl10: AdvancedPageControlView!
+    @IBOutlet weak var pageControl11: AdvancedPageControlView!
+    @IBOutlet weak var pageControll12: AdvancedPageControlView!
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 5
@@ -58,27 +60,34 @@ class ViewController: UIViewController,
         pageControl7.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
         pageControl8.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
         pageControl9.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl10.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        
+        pageControl10.setPage(Int(round(offSet / width)))
+        pageControl11.setPage(Int(round(offSet / width)))
+        pageControll12.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        pageControl1.numberOfPages = 5
         
+        pageControl1.numberOfPages = 5
         pageControl1.drawer = ColorBlendDrawer()
         pageControl2.drawer = DropDrawer()
-        pageControl3.drawer = ExtendedDotDrawer( dotsColor: .clear, isBordered:true,borderColor: .white)
+        pageControl3.drawer = ExtendedDotDrawer( dotsColor: .gray,
+                                                 isBordered:true,
+                                                 borderColor: .white)
         pageControl4.drawer = JumpDrawer()
         pageControl5.drawer = ScaleDrawer()
         pageControl6.drawer = SlideDrawer()
-        pageControl7.drawer = SwapDrawer( dotsColor: .clear, isBordered:true,borderColor: .white)
+        pageControl7.drawer = SwapDrawer( dotsColor: .clear,
+                                          isBordered:true,
+                                          borderColor: .white,
+                                          borderWidth: 2)
+        
         pageControl8.drawer = ThinWormDrawer()
         pageControl9.drawer = ThinWormHeadsDrawer()
         pageControl10.drawer = WormDrawer()
-
+        pageControl11.drawer = InfiniteScrollingDrawer(numberOfPages:7,indicatorColor: .white)
+        pageControll12.drawer = InfiniteDrawer()
+        
     }
-    
 }
 
