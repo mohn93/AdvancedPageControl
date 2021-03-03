@@ -53,7 +53,7 @@ public class AdvancedPageControlView: UIView{
         let displayLink = CADisplayLink(
             target: self, selector: #selector(displayLinkDidFire)
         )
-        displayLink.add(to: .current, forMode: RunLoop.Mode.commonModes)
+        displayLink.add(to: .current, forMode: .common)
         self.displayLink = displayLink
     }
     
