@@ -51,24 +51,23 @@ class ViewController: UIViewController,
         let offSet = scrollView.contentOffset.x
         let width = scrollView.frame.width
         
-        pageControl1.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl2.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl3.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl4.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl5.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl6.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl7.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl8.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl9.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
-        pageControl10.setPage(Int(round(offSet / width)))
-        pageControl11.setPage(Int(round(offSet / width)))
-        pageControll12.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
+        pageControl1.setPage(Int(round(offSet/width)))
+        pageControl2.setPage(Int(round(offSet/width)))
+        pageControl3.setPageOffset(offSet/width)
+        pageControl4.setPage(Int(round(offSet/width)))
+        pageControl5.setPage(Int(round(offSet/width)))
+        pageControl6.setPage(Int(round(offSet/width)))
+        pageControl7.setPage(Int(round(offSet/width)))
+        pageControl8.setPage(Int(round(offSet/width)))
+        pageControl9.setPage(Int(round(offSet/width)))
+        pageControl10.setPage(Int(round(offSet/width)))
+        pageControl11.setPage(Int(round(offSet/width)))
+        pageControll12.setPage(Int(round(offSet/width)))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        pageControl1.numberOfPages = 5
+        collectionView.layer.cornerRadius = 32
         pageControl1.drawer = ColorBlendDrawer()
         pageControl2.drawer = DropDrawer()
         pageControl3.drawer = ExtendedDotDrawer( dotsColor: .gray,
@@ -85,8 +84,8 @@ class ViewController: UIViewController,
         pageControl8.drawer = ThinWormDrawer()
         pageControl9.drawer = ThinWormHeadsDrawer()
         pageControl10.drawer = WormDrawer()
-        pageControl11.drawer = InfiniteScrollingDrawer(numberOfPages:7,indicatorColor: .white)
-        pageControll12.drawer = InfiniteDrawer()
+        pageControl11.drawer = InfiniteDrawer(numberOfPages:5,indicatorColor: .white)
+        pageControll12.drawer = ScrollingDrawer(numberOfPages:5)
         
     }
 }

@@ -19,20 +19,20 @@ public class JumpDrawer:AdvancedPageControlDrawerParentWithIndicator, AdvancedPa
     
     func drawIndicators(_ rect: CGRect) {
         for i in 0..<numberOfPages{
-            let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+            let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
             let y =  rect.origin.y + centeredYPosition
             let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space, numberOfPages: numberOfPages)
-            drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
+            drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(size))
                 , raduis:radius,color: dotsColor,borderWidth: borderWidth,borderColor: borderColor)
         }
     }
     
     fileprivate func drawCurrentItem(_ rect: CGRect) {
         let scaleFactor = getScaleFactor(currentItem: currentItem,ratio: jumpRatio)
-        let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+        let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
         let y = rect.origin.y + centeredYPosition - (scaleFactor / 2)
         let x = getCenteredXPosition(rect, itemPos: currentItem, dotSize: width,space: space, numberOfPages: numberOfPages) - (scaleFactor / 2)
-        drawItem(CGRect(x: x, y:  y , width: width + scaleFactor, height: height + scaleFactor)
+        drawItem(CGRect(x: x, y:  y , width: width + scaleFactor, height: size + scaleFactor)
             , raduis:radius + (scaleFactor / 2),color: indicatorColor,borderWidth: indicatorBorderWidth,borderColor: indicatorBorderColor)
     }
 }

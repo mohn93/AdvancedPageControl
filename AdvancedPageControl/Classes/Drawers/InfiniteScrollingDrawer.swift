@@ -19,7 +19,7 @@ public class InfiniteScrollingDrawer:AdvancedPageControlDrawerParentWithIndicato
     }
     
     func drawIndicators(_ rect: CGRect) {
-        let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+        let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
         for i in 0..<numberOfPages{
             let topTranslate = width
             
@@ -28,8 +28,8 @@ public class InfiniteScrollingDrawer:AdvancedPageControlDrawerParentWithIndicato
             let ed = Int(floor(currentItem) + ceil(CGFloat(visibleDots)))
             let sd = Int(floor(currentItem) - ceil(CGFloat(visibleDots))/2) + 2
             let center = Int(floor(currentItem))
-            let widthRatio = width / height
-            let heightRatio  =  height / width
+            let widthRatio = width / size
+            let heightRatio  =  size / width
             let opisiteTranslate = (topTranslate - translate)
             
             if i <= ed + 1  && i >= sd {
@@ -42,53 +42,53 @@ public class InfiniteScrollingDrawer:AdvancedPageControlDrawerParentWithIndicato
                     y += (opisiteTranslate * heightRatio) / 2
                     x += (opisiteTranslate * widthRatio) / 2
                     let newWidth = CGFloat(width - (opisiteTranslate * widthRatio))
-                    let newHeight = CGFloat(height - (opisiteTranslate * heightRatio))
+                    let newHeight = CGFloat(size - (opisiteTranslate * heightRatio))
                     
                     drawItem(CGRect(x: x, y:  y, width: newWidth , height: newHeight), raduis:radius, color: dotsColor,index: i%visibleDots)
                     
                 } else if i == ed  {
                     
-                    y += ((endsDotScale * height) / 2) - ((translate * heightRatio) / 2)
+                    y += ((endsDotScale * size) / 2) - ((translate * heightRatio) / 2)
                     x += (endsDotScale * width) / 2 - (translate * widthRatio) / 2
                     
                     let newWidth = CGFloat(width  - endsDotScale * width + (translate * widthRatio) )
-                    let newHeight = CGFloat(height - endsDotScale * height + (translate * heightRatio) )
+                    let newHeight = CGFloat(size - endsDotScale * size + (translate * heightRatio) )
                     
-                    drawItem(CGRect(x: x, y:  y, width: newWidth , height: newHeight), raduis:radius, color: dotsColor,index: i%visibleDots)
+                    drawItem(CGRect(x: x, y:  y, width: newWidth , height: newHeight), raduis:radius, color: .yellow,index: i%visibleDots)
                     
                 } else  if i == sd+1{
                     
                     y += (translate * heightRatio) / 2
                     x += (translate * widthRatio) / 2
                     
-                    let newRadius = radius - ((translate ) / 2)
+                    _ = radius - ((translate ) / 2)
 
                     let newWidth = CGFloat(width - (translate * widthRatio))
-                    let newHeight = CGFloat(height - (translate * heightRatio))
+                    let newHeight = CGFloat(size - (translate * heightRatio))
                     
                     drawItem(CGRect(x: x, y:  y, width: newWidth , height: newHeight), raduis:radius, color: dotsColor,index: i%visibleDots)
                     
                 } else if i == sd {
                     
-                    y += ((endsDotScale * height) / 2) + ((translate * heightRatio) / 2)
+                    y += ((endsDotScale * size) / 2) + ((translate * heightRatio) / 2)
                     x += (endsDotScale * width) / 2 + (translate * widthRatio) / 2
-                    let newRadius = radius - (endsDotScale / 2) - (translate / 2)
+                    _ = radius - (endsDotScale / 2) - (translate / 2)
                     let newWidth = CGFloat(width  - endsDotScale * width - (translate * widthRatio) )
-                    let newHeight = CGFloat(height - endsDotScale * height - (translate * heightRatio) )
+                    let newHeight = CGFloat(size - endsDotScale * size - (translate * heightRatio) )
                     
-                    drawItem(CGRect(x: x, y:  y, width: newWidth , height: newHeight), raduis:radius, color: .yellow,index: i%visibleDots)
+                    drawItem(CGRect(x: x, y:  y, width: newWidth , height: newHeight), raduis:radius, color: .cyan,index: i%visibleDots)
                     
                 } else if i == center {
-                    let scale = CGFloat(1.2)
+                    _ = CGFloat(1.2)
                     
                     let translate = (centerScale * width) * (currentItem - (floor(currentItem)))
                     
-                    y += -((centerScale * height) / 2) + ((translate * heightRatio) / 2)
+                    y += -((centerScale * size) / 2) + ((translate * heightRatio) / 2)
                     x += -((centerScale * width) / 2) + (translate * widthRatio) / 2
                     let newWidth = CGFloat(width + ((centerScale * width) ) - (translate * widthRatio) )
-                    let newHeight = CGFloat(height +  ((centerScale * height) ) - (translate * heightRatio) )
+                    let newHeight = CGFloat(size +  ((centerScale * size) ) - (translate * heightRatio) )
                     let color = (dotsColor * Double(progress) ) + (indicatorColor * Double(1 - progress) )
-                    let newRadius = radius - centerScale/2 + translate/2
+                    _ = radius - centerScale/2 + translate/2
                     drawItem(CGRect(x: x, y:  y, width: newWidth, height: newHeight), raduis:radius, color: color,index: i%visibleDots)
                     
                 } else if i == center + 1 {
@@ -98,17 +98,15 @@ public class InfiniteScrollingDrawer:AdvancedPageControlDrawerParentWithIndicato
                     x += -(translate * widthRatio) / 2
                     
                     let newWidth = CGFloat(width + (translate * widthRatio) )
-                    let newHeight = CGFloat(height + (translate * heightRatio) )
+                    let newHeight = CGFloat(size + (translate * heightRatio) )
                     let color = (indicatorColor * Double(progress)) + (dotsColor * Double(1 - progress) )
-                    let newRadius = radius - translate / 2
+                    _ = radius - translate / 2
                     drawItem(CGRect(x: x, y: y, width: newWidth, height: newHeight), raduis:radius, color: color,index: i%visibleDots)
                     
                 } else {
-                    
                     let newWidth = CGFloat(width )
-                    let newHeight = CGFloat(height)
-                    drawItem(CGRect(x: x, y: y, width: newWidth, height: newHeight), raduis:radius,color: dotsColor,index: i%visibleDots)
-                    
+                    let newHeight = CGFloat(size)
+                    drawItem(CGRect(x: x, y: y, width: newWidth, height: newHeight), raduis:radius,color: .black,index: i%visibleDots)
                 }
             }
         }

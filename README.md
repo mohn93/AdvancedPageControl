@@ -30,6 +30,8 @@ pod 'AdvancedPageControl'
 * Worm
 * ThinWorm
 * ThinWormHead
+* Scrolling
+* Infinite
 
 
 ## Usage
@@ -74,7 +76,11 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
       let offSet = scrollView.contentOffset.x
       let width = scrollView.frame.width
       
-      pageControl.setCurrentItem(offset: CGFloat(offSet),width: CGFloat(width))
+      pageControl.setPageOffset(offSet/width)
+      
+      // OR
+      let index = Int(round(offSet/width))
+      pageControl.setPage(index) // This will animate the page controll transition, whenever the index is changed, no need to pass an offset of every scroll offset
 
   }
 ```
@@ -98,6 +104,8 @@ SwapDrawer()
 ThinWormDrawer()
 ThinWormHeadsDrawer()
 WormDrawer()
+Scrolling()
+Infinite()
 ```
 
 ![Alt Text](https://github.com/mohn93/AdvancedPageControl/blob/master/Example/advanced-page-control-demo.gif)

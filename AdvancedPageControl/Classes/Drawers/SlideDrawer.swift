@@ -17,19 +17,19 @@ public class SlideDrawer:AdvancedPageControlDrawerParentWithIndicator, AdvancedP
     
     func drawIndicators(_ rect: CGRect) {
         for i in 0..<numberOfPages{
-            let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+            let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
             let y =  rect.origin.y + centeredYPosition
             let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space, numberOfPages: numberOfPages)
-            drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
+            drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(size))
                 , raduis:radius,color: dotsColor,borderWidth: borderWidth,borderColor: borderColor)
         }
     }
     
     fileprivate func drawCurrentItem(_ rect: CGRect) {
-        let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+        let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
         let y = rect.origin.y + centeredYPosition
         let x = getCenteredXPosition(rect, itemPos: currentItem, dotSize: width,space: space, numberOfPages: numberOfPages)
-        drawItem(CGRect(x: x, y:  y , width: width , height: height )
+        drawItem(CGRect(x: x, y:  y , width: width , height: size )
             , raduis:radius,color: indicatorColor,borderWidth: indicatorBorderWidth,borderColor: indicatorBorderColor)
     }
 }

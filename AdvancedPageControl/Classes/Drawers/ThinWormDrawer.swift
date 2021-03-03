@@ -17,10 +17,10 @@ public class ThinWormDrawer:AdvancedPageControlDrawerParentWithIndicator, Advanc
     
     func drawIndicators(_ rect: CGRect) {
         for i in 0..<numberOfPages{
-            let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+            let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
             let y =  rect.origin.y + centeredYPosition
             let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space, numberOfPages: numberOfPages)
-            drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
+            drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(size))
                 , raduis:radius,color: dotsColor,borderWidth: borderWidth,borderColor: borderColor)
         }
     }
@@ -28,7 +28,7 @@ public class ThinWormDrawer:AdvancedPageControlDrawerParentWithIndicator, Advanc
     fileprivate func drawCurrentItem(_ rect: CGRect) {
         let currPosTranslate = currentItem - floor(currentItem)
         let isPassedHalf = (currPosTranslate) > 0.5
-        let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+        let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
         let curPos = isPassedHalf ? (((currPosTranslate) - 0.5) * 2) + (floor(currentItem)): floor(currentItem)
         let x = getCenteredXPosition(rect, itemPos: curPos, dotSize: width,space: space, numberOfPages: numberOfPages)
         let halfMovementRatio = !isPassedHalf ? currPosTranslate: 0.5 - ( currPosTranslate - 0.5 )
@@ -36,7 +36,7 @@ public class ThinWormDrawer:AdvancedPageControlDrawerParentWithIndicator, Advanc
         
         let y = rect.origin.y + centeredYPosition + thinOffset / 2
         
-        drawItem(CGRect(x: x, y:  y , width:  width  + ( halfMovementRatio * 2 * (space + width) ), height: height - thinOffset )
+        drawItem(CGRect(x: x, y:  y , width:  width  + ( halfMovementRatio * 2 * (space + width) ), height: size - thinOffset )
             , raduis:radius,color: indicatorColor,borderWidth: indicatorBorderWidth,borderColor: indicatorBorderColor)
     }
 }

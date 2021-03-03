@@ -19,18 +19,18 @@ public class SwapDrawer:AdvancedPageControlDrawerParentWithIndicator, AdvancedPa
         for i in 0..<numberOfPages{
             if Int(floor(currentItem)) != i{
                 let translate = (width + space) * (currentItem - (floor(currentItem)))
-                let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+                let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
                 let y =  rect.origin.y + centeredYPosition
                 if i ==  Int(floor(currentItem) + 1 ) && currentItem >= 0.0 {
                     
                     
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width, space: space, numberOfPages: numberOfPages) - translate
-                    drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
+                    drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(size))
                         , raduis:radius,color: dotsColor,borderWidth: borderWidth,borderColor: borderColor)
                 } else if  ceil(currentItem) != CGFloat(i) {
                     
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space, numberOfPages: numberOfPages)
-                    drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(height))
+                    drawItem(CGRect(x: x, y:  y, width: CGFloat(width ), height: CGFloat(size))
                         , raduis:radius,color: dotsColor,borderWidth: borderWidth,borderColor: borderColor)
                     
                 }
@@ -39,10 +39,10 @@ public class SwapDrawer:AdvancedPageControlDrawerParentWithIndicator, AdvancedPa
     }
     
     fileprivate func drawCurrentItem(_ rect: CGRect) {
-        let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+        let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
         let y = rect.origin.y + centeredYPosition
         let x = getCenteredXPosition(rect, itemPos: currentItem, dotSize: width,space: space, numberOfPages: numberOfPages)
-        drawItem(CGRect(x: x, y:  y , width: width , height: height )
+        drawItem(CGRect(x: x, y:  y , width: width , height: size )
             , raduis:radius,color: indicatorColor,borderWidth: indicatorBorderWidth,borderColor: indicatorBorderColor)
     }
 }

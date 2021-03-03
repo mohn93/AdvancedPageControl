@@ -10,6 +10,14 @@ import Foundation
 import UIKit
 
 public class AdvancedPageControlView: UIView{
+    
+    var animDuration = 0.2
+    
+    private var mustGoCurrentItem:CGFloat = 0
+    private var previuscurrentItem:CGFloat = 0
+    private var displayLink: CADisplayLink?
+    private var startTime = 0.0
+    
     public var numberOfPages:Int {get {return drawer.numberOfPages} set(val){
         setNeedsDisplay()
         drawer.numberOfPages = val
@@ -17,85 +25,58 @@ public class AdvancedPageControlView: UIView{
     
     public var drawer:AdvancedPageControlDraw =  InfiniteScrollingDrawer()
     
-    public func setCurrentItem(offset:CGFloat,width:CGFloat){
-        drawer.currentItem = CGFloat(offset ) / CGFloat(width)
+    public func setPageOffset(_ offset:CGFloat){
+        drawer.currentItem = CGFloat(offset)
         setNeedsDisplay()
     }
     
-    public func setPage( _ index:Int ) {
-        if drawer.currentItem != CGFloat(index){
-            drawer.layer = layer
-            drawer.currentItem = CGFloat(index)
-            setNeedsDisplay()
+    public func setPage( _ index:Int) {
+        if mustGoCurrentItem != CGFloat(index){
+            previuscurrentItem = round(drawer.currentItem)
+            self.mustGoCurrentItem = CGFloat(index)
+            startDisplayLink()
         }
     }
     
+    
     override public var intrinsicContentSize: CGSize {
-        return CGSize(width: self.drawer.height, height: self.drawer.height + 16)
+        return CGSize(width: self.drawer.size, height: self.drawer.size + 16)
     }
     
     override public func draw(_ rect: CGRect) {
         drawer.draw(rect)
     }
-}
-
-
-/// A backing layer for ProgressView which supports certain animatable values.
-fileprivate class ProgressLayer: CAShapeLayer {
-    @NSManaged var currentItem: CGFloat
     
-    // Whenever a new presentation layer is created, this function is called and makes a COPY of the object.
-    override init(layer: Any) {
-        super.init(layer: layer)
-        if let layer = layer as? ProgressLayer {
-            currentItem = layer.currentItem
-        }
+    private func startDisplayLink() {
+        stopDisplayLink() // make sure to stop a previous running display link
+        startTime = Date.timeIntervalSinceReferenceDate // reset start time
+        let displayLink = CADisplayLink(
+            target: self, selector: #selector(displayLinkDidFire)
+        )
+        displayLink.add(to: .current, forMode: RunLoop.Mode.commonModes)
+        self.displayLink = displayLink
     }
     
-    override init() {
-        super.init()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override class func needsDisplay(forKey key: String) -> Bool {
-        if isAnimationKeySupported(key) {
-            return true
-        }
-        return super.needsDisplay(forKey: key)
-    }
-    
-    override func action(forKey event: String) -> CAAction? {
-        if ProgressLayer.isAnimationKeySupported(event) {
-            // Copy animation context and mutate as needed
-            guard let animation = currentAnimationContext(in: self)?.copy() as? CABasicAnimation else {
-                setNeedsDisplay()
-                return nil
-            }
-            
-            animation.keyPath = event
-            if let presentation = presentation() {
-                animation.fromValue = presentation.value(forKeyPath: event)
-            }
-            animation.toValue = nil
-            print(event)
-            return animation
-        }
+    @objc private func displayLinkDidFire(_ displayLink: CADisplayLink) {
         
+        var elapsed = Date.timeIntervalSinceReferenceDate - startTime
         
-        return super.action(forKey: event)
+        if elapsed > animDuration {
+            stopDisplayLink()
+            elapsed = animDuration // clamp the elapsed time to the anim length
+        }
+        let progress = CGFloat(elapsed / animDuration)
+        
+        let sign = mustGoCurrentItem - previuscurrentItem
+                
+        drawer.currentItem = CGFloat(progress * sign + (previuscurrentItem))
+        
+        setNeedsDisplay()
     }
     
-    private class func isAnimationKeySupported(_ key: String) -> Bool {
-        return key == #keyPath(currentItem)
-    }
-    
-    private func currentAnimationContext(in layer: CALayer) -> CABasicAnimation? {
-        /// The UIView animation implementation is private, so to check if the view is animating and
-        /// get its property keys we can use the key "backgroundColor" since its been a property of
-        /// UIView which has been forever and returns a CABasicAnimation.
-        return action(forKey: #keyPath(backgroundColor)) as? CABasicAnimation
+    // invalidate display link if it's non-nil, then set to nil
+    private func stopDisplayLink() {
+        displayLink?.invalidate()
+        displayLink = nil
     }
 }

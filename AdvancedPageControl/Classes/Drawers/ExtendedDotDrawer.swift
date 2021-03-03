@@ -33,7 +33,7 @@ public class ExtendedDotDrawer:AdvancedPageControlDrawerParentWithIndicator, Adv
                 if i == Int(currentItem + 2){
                     dotColor = (dotsColor * Double(1 - progress) ) + (indicatorColor * Double( progress) )
 
-                    let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+                    let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
                     let y = rect.origin.y + centeredYPosition
                     let currPosProgress = currentItem - floor(currentItem)
                     let curPos =  (floor(currentItem + 2)) - currPosProgress
@@ -42,18 +42,18 @@ public class ExtendedDotDrawer:AdvancedPageControlDrawerParentWithIndicator, Adv
                     // reverse the scale value
                     let scale = step - ( halfMovementRatio  * step )
                     
-                    newHeight = height
+                    newHeight = size
                     newWidth = width  + scale
                     newX = rect.origin.x  + x
                     newY = y
                     
                 } else {
 
-                    let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+                    let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
                     let y =  rect.origin.y + centeredYPosition
                     let x = getCenteredXPosition(rect,itemPos: CGFloat(i), dotSize: width,space: space, numberOfPages: numberOfPages+1)
                     
-                    newHeight = height
+                    newHeight = size
                     newWidth = width
                     newX = rect.origin.x  + x
                     newY = y
@@ -69,18 +69,16 @@ public class ExtendedDotDrawer:AdvancedPageControlDrawerParentWithIndicator, Adv
     
     fileprivate func drawCurrentItem(_ rect: CGRect) {
         let progress = currentItem - (floor(currentItem))
-
-        let color = (dotsColor * Double(progress) ) + (indicatorColor * Double(1 - progress) )
-        
+        let color = (dotsColor * Double(progress)) + (indicatorColor * Double(1 - progress))
         if currentItem >= 0 {
             let step: (CGFloat) = (space + width)
-            let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
+            let centeredYPosition = getCenteredYPosition(rect, dotSize: size)
             let y = rect.origin.y + centeredYPosition
             let currPosProgress = currentItem - floor(currentItem)
             let steadyPosition =  (floor(currentItem))
             let x = getCenteredXPosition(rect, itemPos: steadyPosition, dotSize: width,space: space, numberOfPages: (numberOfPages)+1)
             let halfMovementRatio =  1 - currPosProgress
-            drawItem(CGRect(x: rect.origin.x  + x, y:  y , width:  width  + ( halfMovementRatio  * step ), height: height )
+            drawItem(CGRect(x: rect.origin.x  + x, y:  y , width:  width  + ( halfMovementRatio  * step ), height: size )
                 , raduis:radius,color: color,borderWidth: borderWidth,borderColor: borderColor)
         }
         
