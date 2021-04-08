@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AdvancedPageControl'
-  s.version          = '0.1.8'
+  s.version          = '0.9.0'
   s.summary          = 'A simple yet powerful page control indicator animations library.'
 
 # This description is used to generate tags and improve search results.
