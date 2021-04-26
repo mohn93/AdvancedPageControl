@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/cocoapods/l/AdvancedPageControl.svg?style=flat)](https://cocoapods.org/pods/AdvancedPageControl)
 [![Platform](https://img.shields.io/cocoapods/p/AdvancedPageControl.svg?style=flat)](https://cocoapods.org/pods/AdvancedPageControl)
 
+<a href="https://www.buymeacoffee.com/moh9" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
 A simple yet powerful page control indicator animations library for iOS, Written in Swift.
 
 ## Example
