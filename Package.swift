@@ -24,7 +24,7 @@ let package = Package(
         .target(
             name: "AdvancedPageControl",
             dependencies: [],
-            path: "AdvancedPageControl"),
+            path: "AdvancedPageControl/Classes"),
         .testTarget(
             name: "AdvancedPageControlTests",
             dependencies: ["AdvancedPageControl"]),
