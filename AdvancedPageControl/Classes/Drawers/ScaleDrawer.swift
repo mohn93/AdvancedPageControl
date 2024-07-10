@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 public class ScaleDrawer: AdvancedPageControlDrawerParentWithIndicator, AdvancedPageControlDraw {
-    var scaleFactor: CGFloat = 8
+    var scaleFactor: CGFloat = 4
 
     public func draw(_ rect: CGRect) {
         drawIndicators(rect)
