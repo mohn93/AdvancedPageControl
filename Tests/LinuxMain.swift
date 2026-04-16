@@ -1,7 +1,6 @@
 import XCTest
+@testable import AdvancedPageControlTests
 
-import AdvancedPageControlTests
-
-var tests = [XCTestCaseEntry]()
-tests += AdvancedPageControlTests.allTests()
-XCTMain(tests)
+XCTMain([
+    testCase(DrawerParentTests.allTests),
+])
