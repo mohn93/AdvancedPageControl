@@ -8,6 +8,11 @@
 
 import Foundation
 import UIKit
+
+public enum PageControlAlignment {
+    case left, center, right
+}
+
 public protocol AdvancedPageControlDraw {
     var currentItem: CGFloat { get set }
     var size: CGFloat { get set }
@@ -62,6 +67,7 @@ public class AdvancedPageControlDrawerParent {
     public var isBordered: Bool
     public var borderColor: UIColor
     public var borderWidth: CGFloat
+    public var alignment: PageControlAlignment = .center
 
     public init(numberOfPages: Int? = 5,
                 height: CGFloat? = 16,
@@ -93,10 +99,18 @@ public class AdvancedPageControlDrawerParent {
     }
 
     func getCenteredXPosition(_ rect: CGRect, itemPos: CGFloat, dotSize: CGFloat, space: CGFloat, numberOfPages: Int) -> CGFloat {
-        let individualDotPos = (itemPos * (dotSize + space))
-        let halfViewWidth = (rect.width / 2)
-        let halfAlldotsWidthWithSpaces = ((CGFloat(numberOfPages) * (dotSize + (space - 1))) / 2.0)
-        return individualDotPos - halfAlldotsWidthWithSpaces + halfViewWidth
+        let individualDotPos = itemPos * (dotSize + space)
+        switch alignment {
+        case .left:
+            return individualDotPos
+        case .right:
+            let totalDotsWidth = CGFloat(numberOfPages) * dotSize + CGFloat(numberOfPages - 1) * space
+            return rect.width + individualDotPos - totalDotsWidth
+        case .center:
+            let halfViewWidth = rect.width / 2
+            let halfAlldotsWidthWithSpaces = (CGFloat(numberOfPages) * (dotSize + (space - 1))) / 2.0
+            return individualDotPos - halfAlldotsWidthWithSpaces + halfViewWidth
+        }
     }
 
     func getCenteredYPosition(_ rect: CGRect, dotSize: CGFloat) -> CGFloat {

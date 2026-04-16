@@ -9,6 +9,8 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(AllDrawersTests.allTests),
         testCase(ExtendedDotDrawerTests.allTests),
         testCase(AdvancedPageControlViewTests.allTests),
+        testCase(DrawerParentAlignmentTests.allTests),
+        testCase(AdvancedPageControlViewAlignmentTests.allTests),
     ]
 }
 #endif

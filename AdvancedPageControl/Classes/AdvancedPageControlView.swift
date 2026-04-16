@@ -22,7 +22,19 @@ public class AdvancedPageControlView: UIView {
         drawer.numberOfPages = val
     }}
 
-    public var drawer: AdvancedPageControlDraw = InfiniteScrollingDrawer()
+    public var drawer: AdvancedPageControlDraw = InfiniteScrollingDrawer() {
+        didSet {
+            (drawer as? AdvancedPageControlDrawerParent)?.alignment = alignment
+            setNeedsDisplay()
+        }
+    }
+
+    public var alignment: PageControlAlignment = .center {
+        didSet {
+            (drawer as? AdvancedPageControlDrawerParent)?.alignment = alignment
+            setNeedsDisplay()
+        }
+    }
     
     init() {
         super.init(frame: .zero)
