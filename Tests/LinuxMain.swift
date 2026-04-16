@@ -8,4 +8,5 @@ XCTMain([
     testCase(AllDrawersTests.allTests),
     testCase(ExtendedDotDrawerTests.allTests),
     testCase(AdvancedPageControlViewTests.allTests),
+    testCase(DrawerParentAlignmentTests.allTests),
 ])
