@@ -17,9 +17,9 @@ public protocol AdvancedPageControlDraw {
 }
 
 public class AdvancedPageControlDrawerParentWithIndicator: AdvancedPageControlDrawerParent {
-    var indicatorBorderColor: UIColor
-    var indicatorBorderWidth: CGFloat
-    var indicatorColor: UIColor
+    public var indicatorBorderColor: UIColor
+    public var indicatorBorderWidth: CGFloat
+    public var indicatorColor: UIColor
     public init(numberOfPages: Int? = 5,
                 height: CGFloat? = 16,
                 width: CGFloat? = 16,
@@ -55,13 +55,13 @@ public class AdvancedPageControlDrawerParent {
     public var size: CGFloat
     public var currentItem: CGFloat
     public var items = [Int]()
-    var width: CGFloat
-    var space: CGFloat
-    var radius: CGFloat
-    var dotsColor: UIColor
-    var isBordered: Bool
-    var borderColor: UIColor
-    var borderWidth: CGFloat
+    public var width: CGFloat
+    public var space: CGFloat
+    public var radius: CGFloat
+    public var dotsColor: UIColor
+    public var isBordered: Bool
+    public var borderColor: UIColor
+    public var borderWidth: CGFloat
 
     public init(numberOfPages: Int? = 5,
                 height: CGFloat? = 16,
